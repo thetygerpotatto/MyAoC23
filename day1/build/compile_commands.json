@@ -1,0 +1,8 @@
+[
+    {
+        "directory": "C:\dev\AoC\day1",
+        "command": "clang++ -L C:\msys64\clang64\lib -I C:\msys64\clang64\include -I C:\msys64\clang64\include\c++\v1 -o C:\dev\AoC\day1\soln2.cpp C:\dev\conway\sln2",
+        "file": "C:\dev\AoC\day1\soln2.cpp"
+    }
+]
+
