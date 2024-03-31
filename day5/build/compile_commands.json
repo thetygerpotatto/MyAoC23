@@ -1,7 +1,7 @@
 [
   {
    "directory": "C:\dev\AoC\day5",
-   "command": "clang++ -L C:\msys64\clang64\c++\v1\lib -I C:\msys64\clang64\c++\v1\include -Wall -g day5.cpp -o day5",
+   "command": "g++ -L C:\msys64\mingw64\lib -I C:\msys64\mingw64\include -Wall -g day5.cpp -o day5",
    "file": "C:\dev\AoC\day5\day5.cpp"
   }
 ]

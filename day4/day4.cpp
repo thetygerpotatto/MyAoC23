@@ -59,7 +59,7 @@ int main() {
 }
 
 
-int calculate_points(int *WinNums, int *CardNums, int Wsize, int Csize) {
+int calculate_points(int*WinNums, int *CardNums, int Wsize, int Csize) {
   int exp = 0;
   int points = 0;
 

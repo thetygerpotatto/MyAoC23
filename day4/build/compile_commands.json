@@ -1,7 +1,0 @@
-[
-  {
-   "directory": "C:\dev\AoC\day4",
-   "command": "clang++ -L C:\msys64\clang64\c++\v1\lib -I C:\msys64\clang64\c++\v1\include -Wall -g day4p2.cpp -o day4p2",
-   "file": "C:\dev\AoC\day4\day4p2.cpp"
-  }
-]

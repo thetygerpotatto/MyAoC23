@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-std::vector<long long> process_seeds(std::string &seeds); 
+std::vector<long long> process_seedsRange(std::string &seeds); 
 std::vector<std::array<long long, 3>> process_map(std::ifstream &file);
 std::vector<long long> seeds_to_locations(std::vector<long long> &seeds, std::array<std::vector<std::array<long long, 3>>,7> &maps);
 
@@ -27,7 +27,7 @@ int main() {
   }
 
   std::getline(file, seeds_string);
-  seeds = process_seeds(seeds_string);
+  seeds = process_seedsRange(seeds_string);
   
   for (int i = 0; i < 7 ; i++) {
     maps[i] = process_map(file);
@@ -36,10 +36,11 @@ int main() {
   file.close();
 
   for (int seed_index = 0; seed_index < seeds.size(); seed_index+=2) {
-    long long seeds_range = seeds[seed_index+1];
-    
-    for (long long dest_in = seeds[seed_index]; dest_in < seeds[seed_index] + seeds_range ; dest_in++) {
+    long long seed_range = seeds[seed_index+1];
+    long long inicial_seed = seeds[seed_index];
 
+    for (long long dest_in = inicial_seed; (dest_in < (inicial_seed + seed_range)) ; dest_in++) {
+      
       for (int map_index = 0; map_index < maps.size(); map_index++) {
         bool notMapped = true;
         long long dest_out = 0;
@@ -51,22 +52,23 @@ int main() {
           if (dest_in >= source && dest_in <= source + range) {
             dest_out = dest_in - source + dest;
             notMapped = false;
-            break;
           }
         }
         if (notMapped) dest_out = dest_in;
         dest_in = dest_out;
       }
-      
       locations.push_back(dest_in);
     }
   }
-
+  
+  std::cout << "lenght: " << locations.size()<< std::endl;
+  std::cout << "map size: "<< maps.size()<< std::endl;
+  std::cout << "seed size: "<< seeds.size()<< std::endl;
   std::vector<long long>::iterator min = std::min_element(locations.begin(), locations.end());
   std::cout << *min;
 }
 
-std::vector<long long> process_seeds(std::string &seeds) {
+std::vector<long long> process_seedsRange(std::string &seeds) {
   std::stringstream seeds_ss(seeds);
   std::vector<long long> seeds_vec;
   std::string s;
@@ -99,9 +101,4 @@ std::vector<std::array<long long, 3>> process_map(std::ifstream &file) {
   return map;
 }
 
-std::vector<long long> seeds_to_locations(std::vector<long long> &seeds, std::array<std::vector<std::array<long long, 3>>,7> &maps) {
-  std::vector<long long> locations;
-
-  return locations;
-}
 
