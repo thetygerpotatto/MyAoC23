@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+
 int main() {
     std::ifstream file;
     file.open("input.txt");
@@ -13,31 +14,26 @@ int main() {
     std::getline(file, str);
     std::stringstream ss(str);
 
-    for (int& t : times) {
-        std::string s;
-        ss >> s;
-        t = std::stoi(s);
-    }
+    std::string s;
+    ss >> s;
+    long long time = std::stoll(s);
+    
 
     std::getline(file, str);
     ss = std::stringstream(str);
     
-    for (int& t : records) {
-        std::string s;
-        ss >> s;
-        t = std::stoi(s);
-    }
+    ss >> s;
+    long long record = std::stoll(s);
+
+    std::cout << time << " " << record << "\n";
 
     file.close();
     int result = 1;
-    for (size_t i = 0 ; i < times.size(); ++i) {
-        int acum = 0;
-        for (int waitTime = times[i]; waitTime > 0; --waitTime) {
-            int distance = waitTime*(times[i]-waitTime);
-            if (distance > records[i]) acum++;
-        }
-        result*=acum;
+    int acum = 0;
+    for (long long waitTime = time; waitTime > 0; --waitTime) {
+        long long distance = waitTime*(time-waitTime);
+        if (distance > record) acum++;
     }
 
-    std::cout << result << "\n";
+    std::cout << acum << "\n";
 }
